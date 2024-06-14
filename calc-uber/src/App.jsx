@@ -2,7 +2,7 @@ import { useState } from "react";
 
 const App = () => {
   const border =
-    "border-solid rounded border-2 border-gray-400 m-1 text-center px-2";
+    "border-solid rounded border-2 border-gray-400 m-2 text-center px-2";
 
   // Estado inicial como um objeto com chaves para cada input
   const [formValues, setFormValues] = useState({
@@ -60,7 +60,7 @@ const App = () => {
   };
 
   return (
-    <div className="text-center my-60">
+    <div className="text-center my-48">
       <div>
         <h1 className="font-bold text-5xl">Calculadora UBER</h1>
         <p className="my-2">Saiba o quanto o seu dia gerou de lucro</p>
