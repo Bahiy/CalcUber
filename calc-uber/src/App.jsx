@@ -1,7 +1,10 @@
-import "./App.css";
+import "./style.js";
 import { useState } from "react";
 
 const App = () => {
+  const border =
+    "border-solid rounded border-2 border-gray-400 mx-1 text-center px-2";
+
   // Estado inicial como um objeto com chaves para cada input
   const [formValues, setFormValues] = useState({
     valorGasolina: "",
@@ -25,7 +28,7 @@ const App = () => {
   // Função para capturar os valores dos inputs quando o botão "Calcular" for pressionado
   const handleSubmit = () => {
     const valorGasolinastr = formValues.valorGasolina.replace(",", ".");
-    const valorGasolina = parseFloat(valorGasolinastr)
+    const valorGasolina = parseFloat(valorGasolinastr);
     const kmPorLitro = parseFloat(formValues.kmPorLitro);
     const kmRodados = parseFloat(formValues.kmRodados);
     const totalDoDia = parseFloat(formValues.totalDoDia);
@@ -37,7 +40,6 @@ const App = () => {
       isNaN(totalDoDia)
     ) {
       return alert("Por favor, insira valores numéricos válidos.");
-
     }
 
     const custoKM = valorGasolina / kmPorLitro;
@@ -46,7 +48,7 @@ const App = () => {
     const gastoPorc = (custoDia * 100) / totalDoDia;
 
     console.log(`Quantos % o gasto representa: ${gastoPorc}%`);
-    console.log(typeof(valorGasolina));
+    console.log(typeof valorGasolina);
 
     // Atualiza o estado usando setFormValues
     setFormValues((prevState) => ({
@@ -59,14 +61,15 @@ const App = () => {
   };
 
   return (
-    <div className="App">
+    <div className="text-center my-60">
       <div>
-        <h1>Calculadora UBER</h1>
-        <p>Saiba o quanto o seu dia gerou de lucro</p>
+        <h1 className="font-bold text-5xl">Calculadora UBER</h1>
+        <p className="my-2">Saiba o quanto o seu dia gerou de lucro</p>
+        <br />
       </div>
-
       <div>
         <input
+          className={border}
           type="text"
           name="valorGasolina"
           value={formValues.valorGasolina}
@@ -75,6 +78,7 @@ const App = () => {
         />
 
         <input
+          className={border}
           type="number"
           name="kmRodados"
           value={formValues.kmRodados}
@@ -83,6 +87,7 @@ const App = () => {
         />
 
         <input
+          className={border}
           type="number"
           name="kmPorLitro"
           value={formValues.kmPorLitro}
@@ -91,6 +96,7 @@ const App = () => {
         />
 
         <input
+          className={border}
           type="number"
           name="totalDoDia"
           value={formValues.totalDoDia}
@@ -99,21 +105,26 @@ const App = () => {
         />
 
         <br />
-        <button type="button" onClick={handleSubmit}>
+        <button
+          className="rounded-full border-solid border-2 border-black p-2 m-2 bg-cyan-700"
+          type="button"
+          onClick={handleSubmit}
+        >
           Calcular
         </button>
       </div>
 
       {isVisible && (
         <div className="resultado">
-          <h2>Resultado:</h2>
           <div>
             {formValues.gastoPorc <= 26 ? (
-              <div>Excelente</div>
+              <p className="text-green-500 font-semibold text-xl">Excelente!</p>
             ) : formValues.gastoPorc <= 31 ? (
-              <div>Fique em alerta</div>
+              <p className="text-yellow-500 font-semibold text-xl">
+                Fique em alerta!
+              </p>
             ) : (
-              <div>Você vai quebrar</div>
+              <p className="text-red-500 font-semibold text-xl">Péssimo!</p>
             )}
 
             <p>O gasto representa {formValues.gastoPorc}% da sua renda.</p>
