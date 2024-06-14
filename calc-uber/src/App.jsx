@@ -1,9 +1,7 @@
 import { useState } from "react";
+import Input from "./components/Input";
 
 const App = () => {
-  const border =
-    "border-solid rounded border-2 border-gray-400 m-2 text-center px-2";
-
   // Estado inicial como um objeto com chaves para cada input
   const [formValues, setFormValues] = useState({
     valorGasolina: "",
@@ -21,6 +19,7 @@ const App = () => {
     setFormValues({
       ...formValues,
       [name]: value,
+
     });
   };
 
@@ -67,40 +66,29 @@ const App = () => {
         <br />
       </div>
       <div>
-        <input
-          className={border}
-          type="text"
-          name="valorGasolina"
+        <Input
+          name={"valorGasolina"}
           value={formValues.valorGasolina}
           onChange={handleInputChange}
-          placeholder="Valor Gasolina"
+          place="Valor Gasolina"
         />
-
-        <input
-          className={border}
-          type="number"
-          name="kmRodados"
+        <Input
+          name={"kmRodados"}
           value={formValues.kmRodados}
           onChange={handleInputChange}
-          placeholder="Total KM rodados hoje"
+          place="KM Rodados Hoje"
         />
-
-        <input
-          className={border}
-          type="number"
-          name="kmPorLitro"
+        <Input
+          name={"kmPorLitro"}
           value={formValues.kmPorLitro}
           onChange={handleInputChange}
-          placeholder="KM/L"
+          place="Média de KM/L"
         />
-
-        <input
-          className={border}
-          type="number"
-          name="totalDoDia"
+        <Input
+          name={"totalDoDia"}
           value={formValues.totalDoDia}
           onChange={handleInputChange}
-          placeholder="Valor bruto recebido hoje"
+          place="Rendimento Bruto"
         />
 
         <br />
