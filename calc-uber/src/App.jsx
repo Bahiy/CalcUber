@@ -1,9 +1,8 @@
-import "./style.js";
 import { useState } from "react";
 
 const App = () => {
   const border =
-    "border-solid rounded border-2 border-gray-400 mx-1 text-center px-2";
+    "border-solid rounded border-2 border-gray-400 m-1 text-center px-2";
 
   // Estado inicial como um objeto com chaves para cada input
   const [formValues, setFormValues] = useState({
