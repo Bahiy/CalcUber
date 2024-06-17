@@ -4,11 +4,11 @@ import Input from "./components/Input";
 const App = () => {
   // Estado inicial como um objeto com chaves para cada input
   const [formValues, setFormValues] = useState({
-    valorGasolina: "",
-    kmPorLitro: "",
-    kmRodados: "",
-    totalDoDia: "",
-    gastoPorc: 0,
+    valorGasolina: null,
+    kmPorLitro: null,
+    kmRodados: null,
+    totalDoDia: null,
+    gastoPorc: null,
   });
 
   const [isVisible, setIsVisible] = useState(false);
@@ -25,8 +25,7 @@ const App = () => {
 
   // Função para capturar os valores dos inputs quando o botão "Calcular" for pressionado
   const handleSubmit = () => {
-    const valorGasolinastr = formValues.valorGasolina.replace(",", ".");
-    const valorGasolina = parseFloat(valorGasolinastr);
+    const valorGasolina = parseFloat(formValues.valorGasolina)
     const kmPorLitro = parseFloat(formValues.kmPorLitro);
     const kmRodados = parseFloat(formValues.kmRodados);
     const totalDoDia = parseFloat(formValues.totalDoDia);
@@ -46,7 +45,6 @@ const App = () => {
     const gastoPorc = (custoDia * 100) / totalDoDia;
 
     console.log(`Quantos % o gasto representa: ${gastoPorc}%`);
-    console.log(typeof valorGasolina);
 
     // Atualiza o estado usando setFormValues
     setFormValues((prevState) => ({
