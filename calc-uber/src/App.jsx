@@ -57,11 +57,10 @@ const App = () => {
   };
 
   return (
-    <div className="text-center my-48">
+    <div className="h-screen flex-col content-center items-center justify-center text-center">
       <div>
         <h1 className="font-bold text-5xl">Calculadora UBER</h1>
         <p className="my-2">Saiba o quanto o seu dia gerou de lucro</p>
-        <br />
       </div>
       <div>
         <Input
@@ -103,16 +102,16 @@ const App = () => {
         <div className="resultado">
           <div>
             {formValues.gastoPorc <= 26 ? (
-              <p className="text-green-500 font-semibold text-xl">Excelente!</p>
+              <p className="text-green-500 font-semibold text-3xl">Excelente!</p>
             ) : formValues.gastoPorc <= 31 ? (
-              <p className="text-yellow-500 font-semibold text-xl">
+              <p className="text-yellow-500 font-semibold text-3xl">
                 Fique em alerta!
               </p>
             ) : (
-              <p className="text-red-500 font-semibold text-xl">Péssimo!</p>
+              <p className="text-red-500 font-semibold text-3xl">Péssimo!</p>
             )}
 
-            <p>O gasto representa {formValues.gastoPorc}% da sua renda.</p>
+            <p>O gasto representa <strong>{formValues.gastoPorc}</strong>% da sua renda.</p>
           </div>
         </div>
       )}
